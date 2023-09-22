@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useState, FormEvent } from 'react';
+import React, { ChangeEvent, FC, useState, FormEvent, KeyboardEvent } from 'react';
 import './App.css';
 import TodoTask from './components/TodoTask';
 import TaskObject from './Interfaces';
@@ -22,11 +22,11 @@ const App: FC= ()=>{
       }
   }
 
-  const addTask =(e:FormEvent<HTMLButtonElement>): void=>{
+  const addTask =(e:FormEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>): void=>{
     e.preventDefault();
     const newTask: TaskObject={
       todo: task,
-      expiresIn: deadLine
+      expiresIn: deadLine 
     }
     setTaskList((prevList)=>{
       return [...prevList, newTask]
